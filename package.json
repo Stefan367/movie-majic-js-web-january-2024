@@ -1,0 +1,19 @@
+{
+  "name": "movie-majic-js-web-january-2024",
+  "version": "1.0.0",
+  "description": "JS Backend Workshop Softuni",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
