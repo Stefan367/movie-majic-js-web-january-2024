@@ -10,6 +10,8 @@ router.post('/create', (req, res) => {
     const newMovie = req.body;
 
     movieService.create(newMovie);
+
+    res.send('Creating movie!');
 });
 
 module.exports = router;
