@@ -26,3 +26,21 @@ exports.getOne = (movieId) => {
 
     return movie;
 }
+
+exports.search = (title, genre, year) => {
+    let filteredMovies = movies.slice();
+
+    if (title) {
+        filteredMovies = filteredMovies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+    }
+
+    if (genre) {
+        filteredMovies = filteredMovies.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+    }
+
+    if (year) {
+        filteredMovies = filteredMovies.filter(movie => movie.year === year);
+    }
+
+    return filteredMovies;
+}
