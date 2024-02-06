@@ -1,10 +1,11 @@
 const Movie = require('../models/Movie');
+const Cast = require('../models/Cast');
 
 exports.getAll = () => Movie.find();
 
 exports.create = (movieData) => Movie.create(movieData);
 
-exports.getOne = (movieId) => Movie.findById(movieId).lean();
+exports.getOne = (movieId) => Movie.findById(movieId).populate('casts');
 
 exports.search = async (title, genre, year) => {
     let filteredMovies = await Movie.find().lean();
