@@ -23,3 +23,13 @@ exports.search = async (title, genre, year) => {
 
     return filteredMovies;
 }
+
+exports.attach = async (movieId, castId) => {
+    // const movie = await this.getOne(movieId);
+
+    // movie.casts.push(castId);
+
+    // return movie.save();
+
+    return Movie.findByIdAndUpdate(movieId, {$push: { casts: castId }});
+}
