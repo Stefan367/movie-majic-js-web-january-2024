@@ -7,22 +7,24 @@ exports.create = (movieData) => Movie.create(movieData);
 
 exports.getOne = (movieId) => Movie.findById(movieId).populate('casts');
 
-exports.search = async (title, genre, year) => {
-    let filteredMovies = await Movie.find().lean();
+exports.search = (title, genre, year) => {
+    let query = {};
 
     if (title) {
-        filteredMovies = filteredMovies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+        // query = query.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+        query.title = new RegExp(title, 'i');
     }
 
     if (genre) {
-        filteredMovies = filteredMovies.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+        // query = query.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+        query.genre = genre.toLowerCase();
     }
 
     if (year) {
-        filteredMovies = filteredMovies.filter(movie => movie.year === year);
+        query.year = year;
     }
 
-    return filteredMovies;
+    return Movie.find(query);
 }
 
 exports.attach = async (movieId, castId) => {
