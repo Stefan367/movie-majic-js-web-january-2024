@@ -11,6 +11,8 @@ router.get('/create', isAuth, (req, res) => {
 router.post('/create', isAuth, async (req, res) => {
     const newMovie = req.body;
 
+    newMovie.owner = req.user._id;
+
     try {
         await movieService.create(newMovie);
 
