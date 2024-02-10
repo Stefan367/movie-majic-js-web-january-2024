@@ -5,6 +5,8 @@ exports.getAll = () => Movie.find();
 
 exports.create = (movieData) => Movie.create(movieData);
 
+exports.edit = (movieId, movieData) => Movie.findByIdAndUpdate(movieId, movieData)
+
 exports.getOne = (movieId) => Movie.findById(movieId).populate('casts');
 
 exports.search = (title, genre, year) => {
@@ -36,3 +38,5 @@ exports.attach = async (movieId, castId) => {
 
     return Movie.findByIdAndUpdate(movieId, {$push: { casts: castId }});
 }
+
+exports.delete = (movieId) => Movie.findByIdAndDelete(movieId);
