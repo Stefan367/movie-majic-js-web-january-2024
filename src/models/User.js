@@ -14,7 +14,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         match: [/^[a-zA-Z0-9]+$/, 'Password should be alphanumeric'],
-        minLength: 6,
+        minLength: [6, 'Password is too short'],
     },
 });
 
